@@ -17,7 +17,7 @@ requires:
   RDF::NS: 20130816
   RDF::Trine: 1.0
 resources:
-  bugtracker: https://github.com/nichtich/Catmandu-RDF/issues
-  homepage: https://github.com/nichtich/Catmandu-RDF
-  repository: https://github.com/nichtich/Catmandu-RDF.git
-version: 0.01
+  bugtracker: https://github.com/gbv/Catmandu-RDF/issues
+  homepage: https://github.com/gbv/Catmandu-RDF
+  repository: https://github.com/gbv/Catmandu-RDF.git
+version: 0.02
