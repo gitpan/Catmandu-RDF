@@ -20,4 +20,4 @@ resources:
   bugtracker: https://github.com/gbv/Catmandu-RDF/issues
   homepage: https://github.com/gbv/Catmandu-RDF
   repository: https://github.com/gbv/Catmandu-RDF.git
-version: 0.02
+version: 0.03

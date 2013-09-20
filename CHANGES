@@ -1,6 +1,18 @@
 Changelog for Catmandu-RDF
 
-0.02 2013-09-06T09:15:05
+0.03 2013-09-20T12:14:16
+ - auto-expand prefixed object-uris [Jakob Voss]
+ - support 'a' as shortcut for 'rdf:type' [Jakob Voss]
+ - next version [Jakob Voss]
+ - nice to have kwalitee score [Jakob Voss]
+ - fixed VERSION [Jakob Voss]
+ - documentation [Jakob Voss]
+ - Merge branch 'master' into devel [Jakob Voss]
+ - implemented basic Exporter [Jakob Voss]
+ - support a subset of JSON-LD [Jakob Voss]
+ - use dzil and travis [Jakob Voss]
+
+0.02 2013-09-06T09:14:51
  - documentation [Jakob Voss]
 
 0.01 2013-09-05T09:39:00

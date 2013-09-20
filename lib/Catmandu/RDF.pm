@@ -1,6 +1,6 @@
 package Catmandu::RDF;
 # ABSTRACT: Modules for handling RDF data within the Catmandu framework
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 
 1;
@@ -14,7 +14,7 @@ Catmandu::RDF - Modules for handling RDF data within the Catmandu framework
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 DESCRIPTION
 

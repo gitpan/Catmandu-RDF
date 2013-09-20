@@ -1,6 +1,6 @@
 package Catmandu::Exporter::RDF;
 # ABSTRACT: serialize RDF data
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 use namespace::clean;
 use Catmandu::Sane;
@@ -75,7 +75,13 @@ sub _expand_object {
     my ($self,$obj) = @_;
 
     # RDF::Trine allows: plain literal or /^_:/ or /^[a-z0-9._\+-]{1,12}:\S+$/i or /^(.*)\@([a-z]{2})$/)
-    return $obj if !ref $obj;
+    if (!ref $obj) {
+        if ($obj =~ /^[a-z0-9]{1,12}:\S+$/i) {
+            my $uri = $self->uri($obj);
+            return { type => 'uri', value => $uri } if $uri;
+        } 
+        return $obj;
+    }
 
     my ($rdf, $bnode) = { };
 
@@ -92,7 +98,7 @@ sub _expand_object {
         for (keys %$obj) { # TODO: recurse via _expand_rdf
             next if /^@/;
 
-            my $b_predicate = $self->uri($_);
+            my $b_predicate = $self->uri($_ eq 'a' ? 'rdf:type' : $_);
             my $b_object    = $self->_expand_object($obj->{$_});
 
             push @{ $bnode->{$b_predicate} }, $b_object;
@@ -122,6 +128,7 @@ sub _expand_rdf {
         my ($predicate, $object) = ($p, $data->{$p});
 
         # TODO: disallow http://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml (better in RDF::NS)
+        $predicate = 'rdf:type' if $predicate eq 'a';
         if ($predicate =~ /^([a-z][a-z0-9]*)[:_]/ and $1 ne 'http') {
             $predicate = $self->uri($predicate);
         }
@@ -150,7 +157,7 @@ Catmandu::Exporter::RDF - serialize RDF data
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -165,6 +172,8 @@ version 0.02
     $exporter->commit;
 
 =head1 DESCRIPTION
+
+Have a look at the unit tests in C<exporter-add.t> for usage examples!
 
 =head1 METHODS
 
