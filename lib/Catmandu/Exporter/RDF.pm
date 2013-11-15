@@ -1,13 +1,13 @@
 package Catmandu::Exporter::RDF;
 # ABSTRACT: serialize RDF data
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 use namespace::clean;
 use Catmandu::Sane;
 use Moo;
 use RDF::Trine::Serializer;
 use RDF::NS;
-use RDF::aRef;
+use RDF::aREF;
 
 with 'Catmandu::Exporter';
 
@@ -52,7 +52,7 @@ sub add {
 
     # TODO: use iterater of statements instead
 
-    my $rdf = RDF::aRef->new( ns => $self->ns )->to_rdfjson( $data );
+    my $rdf = RDF::aREF->new( ns => $self->ns )->to_rdfjson( $data );
     # use Data::Dumper; say Dumper($rdf);
     $model->add_hashref( $rdf );
 
@@ -82,7 +82,7 @@ Catmandu::Exporter::RDF - serialize RDF data
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
@@ -122,8 +122,8 @@ namespace prefixes are stable.
 
 =head2 add( ... )
 
-RDF data can be added in B<Another RDF encoding form (aRef)> as defined at
-L<http://github.com/gbv/aref>. Not all aspects of aRef are supported yet.
+RDF data can be added in B<Another RDF Encoding Form (aREF)> as defined at
+L<http://github.com/gbv/aref>. Not all aspects of aREF are supported yet.
 
 =head2 count
 

@@ -1,6 +1,10 @@
 Changelog for Catmandu-RDF
 
-0.09 2013-11-13T14:29:34
+0.10 2013-11-15T11:18:27
+ - started to support nested input documents [Jakob Voss]
+ - renamed aRef to aREF [Jakob Voss]
+
+0.09 2013-11-13T14:29:24
  - migrated from RDF/JSON to aRef [Jakob Voss]
  - fix link [Jakob Voss]
 

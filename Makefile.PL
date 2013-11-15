@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
     "RDF::Trine" => "1.0"
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.09",
+  "VERSION" => "0.10",
   "test" => {
     "TESTS" => "t/*.t"
   }
