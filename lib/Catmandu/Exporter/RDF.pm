@@ -1,13 +1,13 @@
 package Catmandu::Exporter::RDF;
 # ABSTRACT: serialize RDF data
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 use namespace::clean;
 use Catmandu::Sane;
 use Moo;
 use RDF::Trine::Serializer;
 use RDF::NS;
-use RDF::aREF;
+use RDF::aREF qw(aref_to_trine_statement decode_aref);
 
 with 'Catmandu::Exporter';
 
@@ -43,19 +43,23 @@ sub _build_serializer {
 }
 
 sub add {
-    my ($self, $data) = @_;
+    my ($self, $aref) = @_;
 
     $self->_data(RDF::Trine::Iterator->new()) unless $self->_data;
 
-    # TODO: make performant
+    # TODO: directly use Iterator instead of Model (slow!!!)
+    
     my $model = RDF::Trine::Model->new;
-
-    # TODO: use iterater of statements instead
-
-    my $rdf = RDF::aREF->new( ns => $self->ns )->to_rdfjson( $data );
-    # use Data::Dumper; say Dumper($rdf);
-    $model->add_hashref( $rdf );
-
+    $model->begin_bulk_ops;
+    # TODO: share decoder for performance
+    decode_aref(
+        $aref,
+        ns => $self->ns, 
+        callback => sub {
+            $model->add_statement( aref_to_trine_statement( @_ ) ) 
+        } 
+    );
+    $model->end_bulk_ops;
     $self->_data(
         $self->_data->concat( $model->as_stream )
     );
@@ -74,7 +78,10 @@ sub commit {
 1;
 
 __END__
+
 =pod
+
+=encoding UTF-8
 
 =head1 NAME
 
@@ -82,7 +89,7 @@ Catmandu::Exporter::RDF - serialize RDF data
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
@@ -122,8 +129,8 @@ namespace prefixes are stable.
 
 =head2 add( ... )
 
-RDF data can be added in B<Another RDF Encoding Form (aREF)> as defined at
-L<http://github.com/gbv/aref>. Not all aspects of aREF are supported yet.
+RDF data is added given in B<another RDF Encoding Form (aREF)> as 
+implemented with L<RDF::aREF> and defined at L<http://github.com/gbv/aref>.
 
 =head2 count
 
@@ -138,8 +145,6 @@ to "C<http://purl.org/dc/elements/1.1/title>".
 
 L<Catmandu::Exporter>, L<RDF::Trine::Serializer>
 
-=encoding utf8
-
 =head1 AUTHOR
 
 Jakob Voß
@@ -152,4 +157,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

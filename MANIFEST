@@ -7,7 +7,5 @@ README
 cpanfile
 lib/Catmandu/Exporter/RDF.pm
 lib/Catmandu/RDF.pm
-lib/RDF/aREF.pm
-t/aref.t
 t/exporter-add.t
 t/exporter.t

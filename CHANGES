@@ -1,6 +1,12 @@
 Changelog for Catmandu-RDF
 
-0.10 2013-11-15T11:18:27
+0.11 2013-12-02T14:17:07
+ - documentation [Jakob Voss]
+ - fixed cpanfile [Jakob Voss]
+ - don't test ob Perl 5.10 [Jakob Voss]
+ - split RDF::aREF as independent module [Jakob Voss]
+
+0.10 2013-11-15T11:18:20
  - started to support nested input documents [Jakob Voss]
  - renamed aRef to aREF [Jakob Voss]
 
