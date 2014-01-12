@@ -1,6 +1,6 @@
 package Catmandu::Exporter::RDF;
 # ABSTRACT: serialize RDF data
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 use namespace::clean;
 use Catmandu::Sane;
@@ -89,7 +89,7 @@ Catmandu::Exporter::RDF - serialize RDF data
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 
@@ -101,11 +101,9 @@ version 0.11
         fix  => 'rdf.fix'
     );
 
+    $exporter->add( $aref ); # pass RDF data in aREF encoding
+
     $exporter->commit;
-
-=head1 DESCRIPTION
-
-Have a look at the unit tests in C<exporter-add.t> for usage examples!
 
 =head1 METHODS
 
@@ -151,7 +149,7 @@ Jakob Voß
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Jakob Voß.
+This software is copyright (c) 2014 by Jakob Voß.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

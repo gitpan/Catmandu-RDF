@@ -1,6 +1,8 @@
+use strict;
+use warnings;
 package Catmandu::RDF;
 # ABSTRACT: Modules for handling RDF data within the Catmandu framework
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 
 1;
@@ -17,7 +19,7 @@ Catmandu::RDF - Modules for handling RDF data within the Catmandu framework
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 DESCRIPTION
 
@@ -72,7 +74,7 @@ Jakob Voß
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Jakob Voß.
+This software is copyright (c) 2014 by Jakob Voß.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
