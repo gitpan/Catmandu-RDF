@@ -23,10 +23,10 @@ my %WriteMakefileArgs = (
     "Catmandu" => "0.7",
     "RDF::NS" => 20130816,
     "RDF::Trine" => "1.0",
-    "RDF::aREF" => "0.08"
+    "RDF::aREF" => "0.09"
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.13",
+  "VERSION" => "0.14",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -37,7 +37,7 @@ my %FallbackPrereqs = (
   "Catmandu" => "0.7",
   "RDF::NS" => 20130816,
   "RDF::Trine" => "1.0",
-  "RDF::aREF" => "0.08"
+  "RDF::aREF" => "0.09"
 );
 
 

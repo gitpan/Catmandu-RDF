@@ -1,6 +1,11 @@
 Changelog for Catmandu-RDF
 
-0.13 2014-01-15T12:16:03
+0.14 2014-01-22T07:19:02
+ - internally use RDF::Trine::Model [Jakob Voss]
+ - bug detected (issue #3?) [Jakob Voss]
+ - use RDF::aREF 0.09 [Jakob Voss]
+
+0.13 2014-01-15T12:15:56
  - Merge release [Jakob Voss]
  - Merge branch 'master' of github.com:gbv/Catmandu-RDF [Jakob Voss]
  - use RDF::aREF 0.08 [Jakob Voss]
