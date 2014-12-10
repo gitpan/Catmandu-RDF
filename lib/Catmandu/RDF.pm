@@ -6,7 +6,7 @@ use Catmandu::Util qw(is_instance);
 use Moo::Role;
 use RDF::NS;
 
-our $VERSION = '0.18';
+our $VERSION = '0.19';
 
 our %TYPE_ALIAS = (
     Ttl  => 'Turtle',
@@ -16,7 +16,7 @@ our %TYPE_ALIAS = (
     Json => 'RDFJSON',
 );
 
-# todo use 'file' to guess type
+# TODO: use 'file' to guess type
 has type => (
     is => 'ro', 
     coerce => sub { my $t = ucfirst($_[0]); $TYPE_ALIAS{$t} // $t },
@@ -27,7 +27,7 @@ has ns => (
     default => sub { RDF::NS->new },
     coerce => sub {
         return $_[0] if is_instance($_[0],'RDF::NS');
-        return if !$_[0];
+        return $_[0] if !$_[0];
         return RDF::NS->new($_[0]);
     },
     handles => ['uri'],
@@ -46,8 +46,8 @@ Catmandu::RDF - Modules for handling RDF data within the Catmandu framework
 
 # STATUS
 
-[![Build Status](https://travis-ci.org/gbv/Catmandu-RDF.png)](https://travis-ci.org/gbv/Catmandu-RDF)
-[![Coverage Status](https://coveralls.io/repos/gbv/Catmandu-RDF/badge.png?branch=devel)](https://coveralls.io/r/gbv/Catmandu-RDF?branch=devel)
+[![Build Status](https://travis-ci.org/LibreCat/Catmandu-RDF.png)](https://travis-ci.org/LibreCat/Catmandu-RDF)
+[![Coverage Status](https://coveralls.io/repos/LibreCat/Catmandu-RDF/badge.png)](https://coveralls.io/r/LibreCat/Catmandu-RDF)
 [![Kwalitee Score](http://cpants.cpanauthors.org/dist/Catmandu-RDF.png)](http://cpants.cpanauthors.org/dist/Catmandu-RDF)
 
 =end markdown
@@ -55,8 +55,13 @@ Catmandu::RDF - Modules for handling RDF data within the Catmandu framework
 =head1 DESCRIPTION
 
 Catmandu::RDF contains modules for handling RDF data within the L<Catmandu>
-framework. This release is in an early state of development. Feedback and
-contributions are very welcome at L<https://github.com/nichtich/Catmandu-RDF>!
+framework. RDF data is encoded/decoded in L<aREF|http://gbv.github.io/aREF/> as
+implemented with L<RDF::aREF>. Please keep in mind that RDF is a graph-based
+data structuring format with specialized technologies such as SPARQL and triple
+stores.  Using Catmandu::RDF to transform RDF to RDF (e.g. conversion from one
+RDF serialization to another) is possible but probably less performant than
+decent RDF tools. Catmandu::RDF, however, is more conventient to convert
+between RDF and  other data formats.
 
 =head1 AVAILABLE MODULES
 
@@ -65,33 +70,10 @@ contributions are very welcome at L<https://github.com/nichtich/Catmandu-RDF>!
 =item L<Catmandu::Exporter::RDF>
 
 Serialize RDF data (as RDF/XML, RDF/JSON, Turtle, NTriples, RDFa...).
-RDF data must be provided in B<another RDF Encoding Form (aREF)> as 
-implemented with L<RDF::aREF>.
 
 =item L<Catmandu::Importer::RDF>
 
 Parse RDF data (RDF/XML, RDF/JSON, Turtle, NTriples...).
-
-=back
-
-=head1 SUGGESTED MODULES
-
-The following modules have not been implemented yet. Please contribute or
-comment if you miss them!
-
-=over 4
-
-=item C<Catmandu::Importer::SPARQL>
-
-Import RDF data from a SPARQL endpoint.
-
-=item C<Catmandu::Exporter::SPARUL> or C<Catmandu::Exporter::SPARQL>
-
-Export RDF data with SPARQL/Update.
-
-=item C<Catmandu::Exporter::RDFPatch>
-
-Export RDF with HTTP PATCH.
 
 =back
 

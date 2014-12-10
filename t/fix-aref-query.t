@@ -11,14 +11,14 @@ my $fixer = Catmandu::Fix::aref_query->new(
 );
 
 my $rdf = importer('RDF', file => 't/example.ttl')->first;
-($rdf->{_uri}) = keys $rdf;
+($rdf->{_uri}) = keys %$rdf;
 
 $fixer->fix( $rdf );
 delete $rdf->{ $rdf->{_uri} };
 
 is_deeply $rdf, {
     '_uri' => 'http://example.org',
-    title => 'BAR'
+    title => "B\x{c4}R"
 }, 'simple RDF fix';
 
 done_testing;

@@ -14,6 +14,7 @@ lib/Catmandu/Importer/RDF.pm
 lib/Catmandu/RDF.pm
 t/example.rdf
 t/example.ttl
+t/example.yml
 t/exporter-add.t
 t/exporter.t
 t/fix-aref-query.t
