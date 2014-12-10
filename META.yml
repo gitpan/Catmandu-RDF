@@ -29,6 +29,6 @@ resources:
   bugtracker: https://github.com/LibreCat/Catmandu-RDF/issues
   homepage: https://github.com/LibreCat/Catmandu-RDF
   repository: https://github.com/LibreCat/Catmandu-RDF.git
-version: '0.19'
+version: '0.20'
 x_contributors:
   - 'Jakob Voss <voss@gbv.de>'

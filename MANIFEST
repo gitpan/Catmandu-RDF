@@ -21,3 +21,4 @@ t/fix-aref-query.t
 t/importer.t
 t/issue-3.t
 t/release-pod-syntax.t
+t/url.t
