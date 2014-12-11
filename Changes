@@ -1,5 +1,9 @@
 Changelog for Catmandu-RDF
 
+0.23  2014-12-11 16:41:22 CET
+  - fix bnode mapping bug
+  - simplify calling syntax of aref_query fix
+
 0.22  2014-12-11 15:01:15 CET
   - align with RDF::aREF 0.22, new options predicate_map
 
